@@ -1,0 +1,53 @@
+{
+    "nodes": [
+      {
+        "parameters": {},
+        "id": "start-node",
+        "name": "Start",
+        "type": "n8n-nodes-base.start",
+        "typeVersion": 1,
+        "position": [250, 300]
+      },
+      {
+        "parameters": {
+          "url": "http://localhost:8000/reply",
+          "method": "POST",
+          "responseFormat": "json",
+          "jsonParameters": true,
+          "options": {},
+          "bodyParametersJson": "{\"name\":\"Stefan Klein\", \"email\": \"Dear Joja Health Solutions, thank you for the proposal...\"}"
+        },
+        "id": "call-gpt",
+        "name": "Call GPT API",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 1,
+        "position": [500, 300]
+      },
+      {
+        "parameters": {
+          "functionCode": "return [{ json: { reply: $json.reply } }];"
+        },
+        "id": "log-output",
+        "name": "Log Reply",
+        "type": "n8n-nodes-base.function",
+        "typeVersion": 1,
+        "position": [750, 300]
+      }
+    ],
+    "connections": {
+      "Start": {
+        "main": [["call-gpt"]]
+      },
+      "Call GPT API": {
+        "main": [["log-output"]]
+      }
+    }
+    
+
+
+
+
+
+
+  }
+  

@@ -1,0 +1,18 @@
+credentials.json
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+
+# Jupyter 临时文件
+.ipynb_checkpoints/
+
+# VSCode 配置
+.vscode/
+
+# 环境变量文件（重要）
+.env
+.env.*
+
+# 忽略 Gmail token（防止泄露）
+data/gmail/token.json
